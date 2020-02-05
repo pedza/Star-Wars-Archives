@@ -1,0 +1,25 @@
+body{
+    background-image: url("/img/starWarsBack.jpg");
+}
+
+div{
+    box-sizing: border-box;
+    float: left;
+    vertical-align: auto;
+}
+
+img{
+   
+    width:450px;
+    height:300px;
+}
+
+td, tr {
+    padding: 0px;
+    margin: 0px;
+    border-bottom: solid red 1px
+}
+tr, th, table {
+    padding: 0px;
+    margin:0px;
+}
