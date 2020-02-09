@@ -1,12 +1,19 @@
 body{
-    background-image: url("/img/starWarsBack.jpg");
+    
+    background-image: url("img/starWarsBack.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-div{
+.container, .images{
     box-sizing: border-box;
-    float: left;
-    vertical-align: auto;
+    /* float: left; */
+    vertical-align: center;
+    align-items: center;
 }
+
+
 
 img{
    
@@ -20,6 +27,7 @@ td, tr {
     border-bottom: solid red 1px
 }
 tr, th, table {
+    color:white;
     padding: 0px;
     margin:0px;
 }

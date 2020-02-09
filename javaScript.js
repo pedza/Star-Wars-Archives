@@ -6,6 +6,10 @@ let divButtSelect=document.getElementById("buttoncont")
 divButtSelect.append(buttonGen)
 buttonGen.innerText="next"
 buttonGen.style.visibility="hidden"
+let buttonPrev=document.createElement("button")
+divButtSelect.append(buttonPrev)
+buttonPrev.innerText="Previous"
+buttonPrev.style.visibility="hidden"
 
 
 let tableGen=function(tHead1, tHead2, tHead3, tHead4, tHead5, tHead6){
@@ -29,6 +33,7 @@ let tableGen=function(tHead1, tHead2, tHead3, tHead4, tHead5, tHead6){
     thInTr4.innerText=tHead4
     thInTr5.innerText=tHead5
     thInTr6.innerText=tHead6
+    
 
 }
 
@@ -88,14 +93,28 @@ let counter=1
 buttonGen.addEventListener("click", function(e){
     
     tableSelec.innerText=""
+    
     counter+=1
     console.log(counter)
     if(counter<5){
-    tableSelec.innerText = tableGen("Name", "Model", "Manufacturer", "Cost", "People Capacity", "Class")
-    tableSelec.innerText=getData(`https://swapi.co/api/starships/?page=${counter}&format=json`)
+    tableSelec.innerText=tableGen("Name", "Model", "Manufacturer", "Cost", "People Capacity", "Class"), 
+    getData(`https://swapi.co/api/starships/?page=${counter}&format=json`)
+    buttonPrev.style.visibility="visible"
+    
     }
-    else (tableSelec.innerText="No More Pages")
+    else (tableSelec.innerText="No More Pages", buttonGen.style.visibility="hidden")
 })
+buttonPrev.addEventListener("click", function(e){
+    tableSelec.innerText=""
+    if (counter>1){
+    counter-=1
+    console.log(counter)
+    getData(`https://swapi.co/api/starships/?page=${counter}&format=json`)
+    }
+    else (buttonGen.style.visibility="visible",  
+        buttonPrev.style.visibility="hidden", 
+        tableSelec.innerText="No More Pages"
+)})
 
 
 
@@ -116,6 +135,10 @@ let getData=function(url, img){
     } 
 
     else if (buttonGen.innerText==="next"){
+        tableGenInfoShip(data)
+    }
+
+    else if(buttonPrev){
         tableGenInfoShip(data)
     }
 
